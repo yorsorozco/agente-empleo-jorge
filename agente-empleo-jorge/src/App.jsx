@@ -92,7 +92,7 @@ export default function App() {
     setCargando(true); setTrabajos([]); setLogs([]); setFecha(null);
     setEmailJob(null); setEmailTxt(""); setTab("busqueda"); setExpandido(null);
     const m = MODOS[modo];
-    addLog(`Modo ${m.label} — consultando ${m.portales.length} portales...`);
+    addLog(`Modo ${m.label} — ${m.desc}`);
 
     const system = `Eres un agente experto en búsqueda de empleo para la industria audiovisual, cine, teatro, live events y experiencias inmersivas. Busca ofertas REALES y ACTUALES (marzo 2026) en México e internacionales.
 
@@ -116,7 +116,7 @@ SOBRE EL CAMPO "salario": Es muy importante. Busca activamente rangos de compens
       const res = await fetch("https://api.anthropic.com/v1/messages", {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-api-key": import.meta.env.VITE_ANTHROPIC_API_KEY, "anthropic-version": "2023-06-01", "anthropic-dangerous-direct-browser-access": "true" },
-        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 5000, system, messages: [{ role: "user", content: user }], tools: [{ type: "web_search_20250305", name: "web_search" }] }),
+        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 3000, system, messages: [{ role: "user", content: user }] }),
       });
       const data = await res.json();
       if (data.error) throw new Error(data.error.message);
