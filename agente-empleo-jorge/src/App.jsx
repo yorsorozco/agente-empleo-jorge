@@ -115,7 +115,15 @@ export default function App() {
 ${PROYECTOS_EXCLUIR}
 
 FORMATO: texto plano, SIN HTML, SIN etiquetas cite, SIN markdown. JSON únicamente:
-[{"titulo":"","empresa":"","ubicacion":"","pais":"México|USA|UK|España|otro","tipo":"empleado|freelance|proyecto|convocatoria","descripcion":"3-4 oraciones detalladas texto plano","skills":["s1","s2","s3"],"salario":null,"url":null,"portal":"","fechaPublicacion":"","match":0,"matchRazon":"","porQueAplicar":"2 oraciones específicas conectando proyectos del candidato con esta oferta","urgencia":"alta|media|baja"}]
+
+SOBRE EL CAMPO "contacto": Busca el correo de contacto, nombre del reclutador o responsable de RH mencionado en la oferta. Si no hay correo directo, anota el nombre del portal de aplicación o el departamento. Ejemplo: "rrhh@empresa.com", "María González, reclutadora", o "Aplicar vía LinkedIn". Pon null solo si no hay ninguna referencia.
+
+SOBRE EL CAMPO "salario": Es muy importante. Busca activamente rangos de compensación. Incluye:
+- Si la oferta pública menciona el rango, ponlo exacto.
+- Si el portal tiene datos de mercado para ese puesto en esa región, inclúyelos como "Estimado: $X–$Y MXN/mes" o "Estimado: $X–$Y USD/proyecto".
+- Para freelance: estima tarifa por proyecto o día según estándares de la industria.
+- Solo pon null si realmente no hay ninguna referencia disponible.
+[{"titulo":"","empresa":"","ubicacion":"","pais":"México|USA|UK|España|otro","tipo":"empleado|freelance|proyecto|convocatoria","descripcion":"3-4 oraciones detalladas texto plano","skills":["s1","s2","s3"],"salario":"rango en moneda local o USD si es internacional, o null si no hay info pública","contacto":"correo o nombre del contacto si está disponible, o null","url":null,"portal":"","fechaPublicacion":"","match":0,"matchRazon":"","porQueAplicar":"2 oraciones específicas conectando proyectos del candidato con esta oferta","urgencia":"alta|media|baja"}]
 8-12 resultados, mínimo 3 internacionales, ordenados por match.`;
 
     const user = `PERFIL:\n${PERFIL}\n\nMODO: ${m.label}\nTérminos: ${m.terminos.join(" | ")}\nPortales: ${m.portales.join(", ")}\n\nBusca oportunidades NUEVAS y DISTINTAS. Excluye estrictamente los proyectos actuales. Mínimo 3 internacionales.`;
@@ -279,6 +287,11 @@ FORMATO: texto plano, SIN HTML, SIN etiquetas cite, SIN markdown. JSON únicamen
                       </div>
                     </div>
                     <p style={{ fontSize: 13.5, color: "#57534e", lineHeight: 1.65, margin: 0 }}>{job.descripcion}</p>
+                    {job.salario && (
+                      <div style={{ marginTop: 8, display: "inline-block" }}>
+                        <span style={{ fontSize: 12, color: "#065f46", fontWeight: 600, background: "#d1fae5", padding: "2px 9px", borderRadius: 20 }}>💰 {job.salario}</span>
+                      </div>
+                    )}
                     <div style={{ fontSize: 11, color: "#a8a29e", marginTop: 8, cursor: "pointer" }}>{open ? "▲ ocultar detalle" : "▼ ver detalle completo"}</div>
                   </div>
 
@@ -288,6 +301,19 @@ FORMATO: texto plano, SIN HTML, SIN etiquetas cite, SIN markdown. JSON únicamen
                         <div style={{ background: "#fafaf9", border: "1px solid #e7e5e4", borderLeft: `3px solid ${mc}`, borderRadius: "0 8px 8px 0", padding: "12px 16px", marginBottom: 14 }}>
                           <div style={{ fontSize: 10, color: mc, fontWeight: 700, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: 5 }}>Por qué es una buena oportunidad</div>
                           <p style={{ fontSize: 13, color: "#57534e", margin: 0, lineHeight: 1.6 }}>{job.porQueAplicar}</p>
+                        </div>
+                      )}
+                      {job.contacto && (
+                        <div style={{ marginBottom: 14 }}>
+                          <div style={{ fontSize: 10, color: "#a8a29e", fontWeight: 700, textTransform: "uppercase", letterSpacing: ".1em", marginBottom: 6 }}>Contacto / Cómo aplicar</div>
+                          <div style={{ fontSize: 13, color: "#1c1917", fontWeight: 500, display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ fontSize: 14 }}>📬</span>
+                            {job.contacto.includes("@") ? (
+                              <a href={"mailto:" + job.contacto} style={{ color: "#1e40af", fontWeight: 600, textDecoration: "none" }}>{job.contacto}</a>
+                            ) : (
+                              <span>{job.contacto}</span>
+                            )}
+                          </div>
                         </div>
                       )}
                       {job.skills && job.skills.length > 0 && (
@@ -301,7 +327,11 @@ FORMATO: texto plano, SIN HTML, SIN etiquetas cite, SIN markdown. JSON únicamen
                       <div style={{ display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", paddingTop: 12, borderTop: "1px solid #f5f4f1" }}>
                         <span style={{ fontSize: 12, color: "#a8a29e" }}>{job.portal}</span>
                         {job.fechaPublicacion && <span style={{ fontSize: 12, color: "#a8a29e" }}>{job.fechaPublicacion}</span>}
-                        {job.salario && <span style={{ fontSize: 12, color: "#1c1917", fontWeight: 600 }}>{job.salario}</span>}
+                        {job.salario && (
+                          <span style={{ fontSize: 13, color: "#065f46", fontWeight: 700, background: "#d1fae5", padding: "3px 10px", borderRadius: 20 }}>
+                            💰 {job.salario}
+                          </span>
+                        )}
                         <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
                           {job.url && <a href={job.url} target="_blank" rel="noreferrer" style={{ fontSize: 13, color: mc, fontWeight: 600, textDecoration: "none" }}>Ver oferta ↗</a>}
                           <button onClick={() => redactarEmail(job)} style={{ fontSize: 13, padding: "8px 18px", background: mc, color: "white", border: "none", borderRadius: 8, fontWeight: 600, cursor: "pointer", fontFamily: F }}>Redactar correo →</button>
