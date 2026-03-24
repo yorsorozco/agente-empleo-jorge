@@ -158,8 +158,21 @@ export default function App() {
     addLog(`Modo: ${m.label} — ${m.desc}`);
     addLog(`Consultando ${m.portales.length} portales especializados...`);
 
-    const system = `Eres un agente experto en búsqueda de empleo para la industria audiovisual, cine, teatro y live events en México y Latinoamérica. Busca ofertas REALES y ACTUALES (marzo 2026). Responde ÚNICAMENTE con JSON válido sin texto adicional ni backticks:
-[{"titulo":"","empresa":"","ubicacion":"","tipo":"empleado|freelance|proyecto|convocatoria","descripcion":"2-3 oraciones","requisitos":"una línea","salario":null,"url":null,"portal":"","fechaPublicacion":"","match":0,"matchRazon":"","urgencia":"alta|media|baja"}]
+    const system = `Eres un agente experto en búsqueda de empleo para la industria audiovisual, cine, teatro y live events en México y Latinoamérica. Busca ofertas REALES y ACTUALES (marzo 2026).
+
+IMPORTANTE: El candidato YA TRABAJA en estos proyectos — NO los incluyas como oportunidades:
+- Celebrity Cruises Xcel (Director/Productor de Contenidos)
+- "El Efecto" con Paula Watson (Diseñador de Video Escénico)
+- Pacífico Azul / Cocolab Los Cabos
+- Switch It / Lucero (concierto abril 2026)
+- Cautiverio de las almas / UNAM
+
+Busca NUEVAS oportunidades distintas a las anteriores.
+
+En las descripciones NO incluyas etiquetas HTML como <cite>, </cite> ni ningún tag. Solo texto plano.
+
+Responde ÚNICAMENTE con JSON válido sin texto adicional ni backticks:
+[{"titulo":"","empresa":"","ubicacion":"","tipo":"empleado|freelance|proyecto|convocatoria","descripcion":"2-3 oraciones en texto plano sin HTML","requisitos":"una línea","salario":null,"url":null,"portal":"","fechaPublicacion":"","match":0,"matchRazon":"","urgencia":"alta|media|baja"}]
 Devuelve 7-12 oportunidades ordenadas por match descendente.`;
 
     const user = `PERFIL:\n${PERFIL_GENERAL}\n\nMODO: ${m.label}\nTérminos: ${m.terminos.join(" | ")}\nPortales: ${m.portales.join(", ")}\n\nBusca oportunidades concretas y actuales. Incluye trabajo formal, freelance, colaboraciones y convocatorias vigentes. Considera marcas de lujo, agencias creativas, festivales, streaming, productoras internacionales. El candidato tiene Premio Metropolitano de Teatro, ha trabajado con Diego Luna, Luis Gerardo Méndez, Daniel Giménez Cacho, Amazon Music, Tiffany & Co, Celebrity Cruises y The Sphere.`;
