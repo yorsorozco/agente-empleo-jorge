@@ -6,33 +6,17 @@ const PROYECTOS_ACTUALES = [
   "cautiverio de las almas","unam inquisición","switch it lucero","lucero abril",
 ];
 
-const PERFIL = `JORGE OROZCO — Cineasta · Director y Productor de Contenidos Multimedia
-Ciudad de México | jorgeorozco.mx | toloache.tv | @toloachetv | IMDb: nm2459902
+const PERFIL = `Cineasta, Director y Productor Multimedia. 25 años. CDMX.
+Formación: Dirección de Cine San Pablo CEU Madrid + Licenciatura Mercadotecnia UVM.
+Premio Metropolitano Teatro 2022 Mejor Diseño de Video.
+Internacionales: The Sphere Las Vegas, Tiffany Wonder Tokyo, Celebrity Cruises Xcel.
+Teatro: Mamma Mía (OCESA), Network (Daniel Giménez Cacho), Privacidad (Diego Luna, Luis Gerardo Méndez).
+Cine/TV: La sombra del Ángel (escritor/director 13 caps), Dany Who (Paramount Channel).
+Conciertos Switch It: Carin León, Benny Ibarra, Amazon Music.
+Inmersivo: Cocolab, UNAM, Josué Ibáñez Studio.
+Tools: Resolume, Notch, Disguise xR, After Effects, DaVinci, Premiere.`;
 
-PERFIL: Cineasta, director y productor con más de 25 años de trayectoria en cine, televisión, teatro, espectáculos en vivo y experiencias inmersivas. Formado en Dirección de Cine en San Pablo CEU (Madrid) y Licenciado en Mercadotecnia por la Universidad del Valle de México. Socio fundador de Toloache.tv.
-
-RECONOCIMIENTOS: Premio Metropolitano de Teatro 2022 — Mejor Diseño de Video, "Network" (prot. Daniel Giménez Cacho). Cortometrajes premiados: Huellas (2014), Casa Capuchinas (2014).
-
-CINE Y TV: La sombra del Ángel (escritor/director 13 caps, Estudios Churubusco 2012), Los Mayas son eternos (3 caps, Churubusco 2012), Dany Who (Viacom/Paramount Channel), 13 Miedos (Lemon Media). Cortometrajes: El vengador (2008), Huellas y Casa Capuchinas (2014, premiados).
-
-TEATRO: Mamma Mía (OCESA, Diseñador de Video y Productor Asociado), "Network" prot. Daniel Giménez Cacho (Premio Metropolitano 2022), "Privacidad" con Diego Luna y Luis Gerardo Méndez, Cirque Music: Querida, Peter Pan (OCESA).
-
-INMERSIVO: The Sphere Las Vegas (Josué Ibáñez Studio), Tiffany Wonder Tokyo (Tiffany & Co.), Re de Café Tacuba 30 aniversario, A Capite ad Calcem (UNAM), Egipto y Disney (Cocolab).
-
-CONCIERTOS (Switch It 2020-presente): Carin León, Benny Ibarra, Amazon Music.
-
-HERRAMIENTAS: Adobe Premiere, After Effects, DaVinci, Resolume, Notch, Disguise (xR), Final Draft, Movie Magic.
-IDIOMAS: Español nativo, Inglés profesional.`;
-
-const PROYECTOS_EXCLUIR = `PROYECTOS ACTUALES — EXCLUSIÓN TOTAL. Jorge YA trabaja en estos proyectos, NO los incluyas como vacantes bajo ningún concepto. Si encuentras una vacante relacionada con estas empresas, descártala y busca otra diferente:
-1. Celebrity Cruises / Celebrity Xcel — Jorge ES el director y productor de contenidos.
-2. "El Efecto" con Paula Watson — Jorge ES el diseñador de video escénico.
-3. Pacífico Azul / Cocolab Los Cabos — Jorge YA dirige contenidos ahí.
-4. "La casa que habitamos" / Mucho Power — Jorge YA es el director, en post-producción.
-5. "Cautiverio de las almas" — Jorge YA la terminó para la UNAM.
-6. Switch It + Lucero concierto abril 2026 — Jorge YA está en ese proyecto.
-
-Si tienes duda sobre si incluir una vacante, NO la incluyas. Busca otra.`;
+const PROYECTOS_EXCLUIR = `EXCLUIR SIEMPRE (Jorge ya trabaja en estos): Celebrity Cruises Xcel, El Efecto/Paula Watson, Pacífico Azul/Cocolab, La casa que habitamos, Cautiverio de las almas/UNAM, Switch It/Lucero. Si una vacante menciona estas empresas, cámbiala por otra.`;
 
 const MODOS = {
   general: {
